@@ -1,15 +1,21 @@
 # Hospital Network
 
+<div>
 
+[![Build Status](https://travis-ci.org/NFhbar/Ethereum-Medical-Records.png?branch=master)](https://travis-ci.org/NFhbar/Ethereum-Medical-Records)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
-Built with [Truffle](http://truffleframework.com/) and [zeppelin-solidity](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/ownership/Ownable.sol), deployed to [Rinkeby Test Net](https://rinkeby.etherscan.io/).
+</div>
 
-Version 0.0.1 - Rinkeby Network
-Contract can be found [here](https://rinkeby.etherscan.io/address/0xc2aa2051dc3af60e9a9f79f14d45febc61b2dbb3).
-The contract is owned by [owner](https://rinkeby.etherscan.io/address/0x54e3ed065393ee5ea695c84c124dafbbc5955d73).
+Built with [Truffle](http://truffleframework.com/) and [zeppelin-solidity](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/ownership/Ownable.sol).
+
 
 ## Install
-Clone repo to local machine, then:
+Clone repo:
+```
+git clone git@github.com:NFhbar/Ethereum-Medical-Records.git
+```
+then:
 ```
 npm install
 ```
@@ -32,7 +38,7 @@ truffle(develop)> test
 
 ## Security Analysis
 Security analysis performed using [Mythril](https://github.com/NFhbar/mythril).
-Results [here](https://github.com/NFhbar/BIGSmartContract/blob/master/security/README_MYTHRIL.md).
+Results [here](https://github.com/NFhbar/Ethereum-Medical-Records/blob/master/security/README_MYTHRIL.md).
 
 ## Remix
 

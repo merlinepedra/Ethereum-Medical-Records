@@ -1,7 +1,7 @@
 {
   "name": "hospital_network",
   "version": "0.0.1",
-  "description": "encrypted medical system records",
+  "description": "ethereum medical system records",
   "main": "truffle.js",
   "directories": {
     "test": "test"
@@ -13,7 +13,9 @@
     "truffle",
     "solidity"
   ],
-  "author": "Nicolas Frega",
+  "author": "Nicolas Frega - <frega.nicolas@gmail.com>",
+  "repository" :
+    { "type" : "git", "url" : "https://github.com/NFhbar/Ethereum-Medical-Records" },
   "license": "MIT",
   "devDependencies": {
     "dotenv": "^4.0.0",
