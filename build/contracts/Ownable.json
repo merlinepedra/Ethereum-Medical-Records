@@ -53,8 +53,8 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b60008054600160a060020a033316600160a060020a03199091161790556101d18061003b6000396000f30060606040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416638da5cb5b8114610050578063f2fde38b1461008c575b600080fd5b341561005b57600080fd5b6100636100ba565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561009757600080fd5b6100b873ffffffffffffffffffffffffffffffffffffffff600435166100d6565b005b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100fe57600080fd5b73ffffffffffffffffffffffffffffffffffffffff8116151561012057600080fd5b60005473ffffffffffffffffffffffffffffffffffffffff80831691167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a36000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff929092169190911790555600a165627a7a7230582065dd947972bdda486e942f67083a04c9509dd1db97cf485ee436f590e6c03ad00029",
-  "deployedBytecode": "0x60606040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416638da5cb5b8114610050578063f2fde38b1461008c575b600080fd5b341561005b57600080fd5b6100636100ba565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561009757600080fd5b6100b873ffffffffffffffffffffffffffffffffffffffff600435166100d6565b005b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100fe57600080fd5b73ffffffffffffffffffffffffffffffffffffffff8116151561012057600080fd5b60005473ffffffffffffffffffffffffffffffffffffffff80831691167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a36000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff929092169190911790555600a165627a7a7230582065dd947972bdda486e942f67083a04c9509dd1db97cf485ee436f590e6c03ad00029",
+  "bytecode": "0x6060604052341561000f57600080fd5b60008054600160a060020a033316600160a060020a03199091161790556101d18061003b6000396000f30060606040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416638da5cb5b8114610050578063f2fde38b1461008c575b600080fd5b341561005b57600080fd5b6100636100ba565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561009757600080fd5b6100b873ffffffffffffffffffffffffffffffffffffffff600435166100d6565b005b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100fe57600080fd5b73ffffffffffffffffffffffffffffffffffffffff8116151561012057600080fd5b60005473ffffffffffffffffffffffffffffffffffffffff80831691167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a36000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff929092169190911790555600a165627a7a72305820732dac94c04945d23588cf32e04e32f56a09da12c77b9008e399d89f3b0eec840029",
+  "deployedBytecode": "0x60606040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416638da5cb5b8114610050578063f2fde38b1461008c575b600080fd5b341561005b57600080fd5b6100636100ba565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561009757600080fd5b6100b873ffffffffffffffffffffffffffffffffffffffff600435166100d6565b005b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff9081169116146100fe57600080fd5b73ffffffffffffffffffffffffffffffffffffffff8116151561012057600080fd5b60005473ffffffffffffffffffffffffffffffffffffffff80831691167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a36000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff929092169190911790555600a165627a7a72305820732dac94c04945d23588cf32e04e32f56a09da12c77b9008e399d89f3b0eec840029",
   "sourceMap": "217:787:2:-;;;469:55;;;;;;;;501:5;:18;;-1:-1:-1;;;;;509:10:2;501:18;-1:-1:-1;;;;;;501:18:2;;;;;;217:787;;;;;;",
   "deployedSourceMap": "217:787:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169;;;;;;;;;;;;;;;;;;238:20;;;;;;:::o;832:169::-;653:5;;639:10;653:5;639:19;;;653:5;;639:19;631:28;;;;;;908:22;;;;;900:31;;;;;;958:5;;937:37;;;;;958:5;937:37;;;;;;;;;;980:5;:16;;-1:-1:-1;;980:16:2;;;;;;;;;;;;832:169::o",
   "source": "pragma solidity ^0.4.18;\n\n\n/**\n * @title Ownable\n * @dev The Ownable contract has an owner address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\ncontract Ownable {\n  address public owner;\n\n\n  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n\n\n  /**\n   * @dev The Ownable constructor sets the original `owner` of the contract to the sender\n   * account.\n   */\n  function Ownable() public {\n    owner = msg.sender;\n  }\n\n  /**\n   * @dev Throws if called by any account other than the owner.\n   */\n  modifier onlyOwner() {\n    require(msg.sender == owner);\n    _;\n  }\n\n  /**\n   * @dev Allows the current owner to transfer control of the contract to a newOwner.\n   * @param newOwner The address to transfer ownership to.\n   */\n  function transferOwnership(address newOwner) public onlyOwner {\n    require(newOwner != address(0));\n    OwnershipTransferred(owner, newOwner);\n    owner = newOwner;\n  }\n\n}\n",
@@ -121,6 +121,7 @@
           },
           {
             "anonymous": false,
+            "documentation": null,
             "id": 907,
             "name": "OwnershipTransferred",
             "nodeType": "EventDefinition",
@@ -224,7 +225,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 965,
+                        "referencedDeclaration": 966,
                         "src": "509:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -257,6 +258,7 @@
                 }
               ]
             },
+            "documentation": "@dev The Ownable constructor sets the original `owner` of the contract to the sender\naccount.",
             "id": 916,
             "implemented": true,
             "isConstructor": true,
@@ -312,7 +314,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 965,
+                            "referencedDeclaration": 966,
                             "src": "639:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -366,7 +368,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 968,
+                      "referencedDeclaration": 969,
                       "src": "631:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -398,6 +400,7 @@
                 }
               ]
             },
+            "documentation": "@dev Throws if called by any account other than the owner.",
             "id": 927,
             "name": "onlyOwner",
             "nodeType": "ModifierDefinition",
@@ -520,7 +523,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 968,
+                      "referencedDeclaration": 969,
                       "src": "900:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -664,6 +667,7 @@
                 }
               ]
             },
+            "documentation": "@dev Allows the current owner to transfer control of the contract to a newOwner.\n@param newOwner The address to transfer ownership to.",
             "id": 952,
             "implemented": true,
             "isConstructor": false,
@@ -806,6 +810,7 @@
           },
           {
             "anonymous": false,
+            "documentation": null,
             "id": 907,
             "name": "OwnershipTransferred",
             "nodeType": "EventDefinition",
@@ -909,7 +914,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 965,
+                        "referencedDeclaration": 966,
                         "src": "509:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -942,6 +947,7 @@
                 }
               ]
             },
+            "documentation": "@dev The Ownable constructor sets the original `owner` of the contract to the sender\naccount.",
             "id": 916,
             "implemented": true,
             "isConstructor": true,
@@ -997,7 +1003,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 965,
+                            "referencedDeclaration": 966,
                             "src": "639:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -1051,7 +1057,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 968,
+                      "referencedDeclaration": 969,
                       "src": "631:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1083,6 +1089,7 @@
                 }
               ]
             },
+            "documentation": "@dev Throws if called by any account other than the owner.",
             "id": 927,
             "name": "onlyOwner",
             "nodeType": "ModifierDefinition",
@@ -1205,7 +1212,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 968,
+                      "referencedDeclaration": 969,
                       "src": "900:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1349,6 +1356,7 @@
                 }
               ]
             },
+            "documentation": "@dev Allows the current owner to transfer control of the contract to a newOwner.\n@param newOwner The address to transfer ownership to.",
             "id": 952,
             "implemented": true,
             "isConstructor": false,
@@ -1431,9 +1439,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+    "version": "0.4.21+commit.dfe3193c.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-04-10T18:34:12.341Z"
+  "updatedAt": "2018-04-10T19:02:34.201Z"
 }

@@ -64,10 +64,10 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b60008054600160a060020a033316600160a060020a03199091161790556102358061003b6000396000f3006060604052600436106100615763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416630900f0108114610066578063445df0ac146100945780638da5cb5b146100b9578063fdacd576146100f5575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351661010b565b005b341561009f57600080fd5b6100a76101ba565b60405190815260200160405180910390f35b34156100c457600080fd5b6100cc6101c0565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561010057600080fd5b6100926004356101dc565b600080543373ffffffffffffffffffffffffffffffffffffffff908116911614156101b6578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040517c010000000000000000000000000000000000000000000000000000000063ffffffff84160281526004810191909152602401600060405180830381600087803b15156101a157600080fd5b6102c65a03f115156101b257600080fd5b5050505b5050565b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff908116911614156102065760018190555b505600a165627a7a7230582098400edc418b1244ac570b5ffbd5c24852ea0e8005692eb557377027beb0f5ea0029",
-  "deployedBytecode": "0x6060604052600436106100615763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416630900f0108114610066578063445df0ac146100945780638da5cb5b146100b9578063fdacd576146100f5575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351661010b565b005b341561009f57600080fd5b6100a76101ba565b60405190815260200160405180910390f35b34156100c457600080fd5b6100cc6101c0565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561010057600080fd5b6100926004356101dc565b600080543373ffffffffffffffffffffffffffffffffffffffff908116911614156101b6578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040517c010000000000000000000000000000000000000000000000000000000063ffffffff84160281526004810191909152602401600060405180830381600087803b15156101a157600080fd5b6102c65a03f115156101b257600080fd5b5050505b5050565b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff908116911614156102065760018190555b505600a165627a7a7230582098400edc418b1244ac570b5ffbd5c24852ea0e8005692eb557377027beb0f5ea0029",
+  "bytecode": "0x6060604052341561000f57600080fd5b60008054600160a060020a033316600160a060020a03199091161790556102318061003b6000396000f3006060604052600436106100615763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416630900f0108114610066578063445df0ac146100945780638da5cb5b146100b9578063fdacd576146100f5575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351661010b565b005b341561009f57600080fd5b6100a76101b6565b60405190815260200160405180910390f35b34156100c457600080fd5b6100cc6101bc565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561010057600080fd5b6100926004356101d8565b600080543373ffffffffffffffffffffffffffffffffffffffff908116911614156101b2578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040517c010000000000000000000000000000000000000000000000000000000063ffffffff84160281526004810191909152602401600060405180830381600087803b15156101a157600080fd5b5af115156101ae57600080fd5b5050505b5050565b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff908116911614156102025760018190555b505600a165627a7a723058201c8b9e39cc44e06fb28e3ff810c97bc25887c09b6791bde8398f38940f40e8ad0029",
+  "deployedBytecode": "0x6060604052600436106100615763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416630900f0108114610066578063445df0ac146100945780638da5cb5b146100b9578063fdacd576146100f5575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351661010b565b005b341561009f57600080fd5b6100a76101b6565b60405190815260200160405180910390f35b34156100c457600080fd5b6100cc6101bc565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b341561010057600080fd5b6100926004356101d8565b600080543373ffffffffffffffffffffffffffffffffffffffff908116911614156101b2578190508073ffffffffffffffffffffffffffffffffffffffff1663fdacd5766001546040517c010000000000000000000000000000000000000000000000000000000063ffffffff84160281526004810191909152602401600060405180830381600087803b15156101a157600080fd5b5af115156101ae57600080fd5b5050505b5050565b60015481565b60005473ffffffffffffffffffffffffffffffffffffffff1681565b6000543373ffffffffffffffffffffffffffffffffffffffff908116911614156102025760018190555b505600a165627a7a723058201c8b9e39cc44e06fb28e3ff810c97bc25887c09b6791bde8398f38940f40e8ad0029",
   "sourceMap": "26:488:0:-;;;178:58;;;;;;;;213:5;:18;;-1:-1:-1;;;;;221:10:0;213:18;-1:-1:-1;;;;;;213:18:0;;;;;;26:488;;;;;;",
-  "deployedSourceMap": "26:488:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;347:165;;;;;;;;;;;;;;;;;;74:36;;;;;;;;;;;;;;;;;;;;;;;;;;;50:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;240:103;;;;;;;;;;;;;;347:165;409:19;161:5;;147:10;161:5;147:19;;;161:5;;147:19;143:26;;;442:11;409:45;;460:8;:21;;;482:24;;460:47;;;;;;;;;;;;;;;;;;-1:-1:-1;460:47:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;143:26;347:165;;:::o;74:36::-;;;;:::o;50:20::-;;;;;;:::o;240:103::-;161:5;;147:10;161:5;147:19;;;161:5;;147:19;143:26;;;302:24;:36;;;143:26;240:103;:::o",
+  "deployedSourceMap": "26:488:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;347:165;;;;;;;;;;;;;;;;;;74:36;;;;;;;;;;;;;;;;;;;;;;;;;;;50:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;240:103;;;;;;;;;;;;;;347:165;409:19;161:5;;147:10;161:5;147:19;;;161:5;;147:19;143:26;;;442:11;409:45;;460:8;:21;;;482:24;;460:47;;;;;;;;;;;;;;;;;;-1:-1:-1;460:47:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;143:26;347:165;;:::o;74:36::-;;;;:::o;50:20::-;;;;;;:::o;240:103::-;161:5;;147:10;161:5;147:19;;;161:5;;147:19;143:26;;;302:24;:36;;;143:26;240:103;:::o",
   "source": "pragma solidity ^0.4.17;\n\ncontract Migrations {\n  address public owner;\n  uint public last_completed_migration;\n\n  modifier restricted() {\n    if (msg.sender == owner) _;\n  }\n\n  function Migrations() public {\n    owner = msg.sender;\n  }\n\n  function setCompleted(uint completed) public restricted {\n    last_completed_migration = completed;\n  }\n\n  function upgrade(address new_address) public restricted {\n    Migrations upgraded = Migrations(new_address);\n    upgraded.setCompleted(last_completed_migration);\n  }\n}\n",
   "sourcePath": "/home/nico/Desktop/public_repos/hospital_network/contracts/Migrations.sol",
   "ast": {
@@ -182,7 +182,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1014,
+                        "referencedDeclaration": 1023,
                         "src": "147:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -236,6 +236,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 14,
             "name": "restricted",
             "nodeType": "ModifierDefinition",
@@ -285,7 +286,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1014,
+                        "referencedDeclaration": 1023,
                         "src": "221:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -318,6 +319,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 23,
             "implemented": true,
             "isConstructor": true,
@@ -398,6 +400,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 35,
             "implemented": true,
             "isConstructor": false,
@@ -636,6 +639,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 55,
             "implemented": true,
             "isConstructor": false,
@@ -828,7 +832,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1014,
+                        "referencedDeclaration": 1023,
                         "src": "147:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -882,6 +886,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 14,
             "name": "restricted",
             "nodeType": "ModifierDefinition",
@@ -931,7 +936,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1014,
+                        "referencedDeclaration": 1023,
                         "src": "221:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -964,6 +969,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 23,
             "implemented": true,
             "isConstructor": true,
@@ -1044,6 +1050,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 35,
             "implemented": true,
             "isConstructor": false,
@@ -1282,6 +1289,7 @@
                 }
               ]
             },
+            "documentation": null,
             "id": 55,
             "implemented": true,
             "isConstructor": false,
@@ -1364,22 +1372,16 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+    "version": "0.4.21+commit.dfe3193c.Emscripten.clang"
   },
   "networks": {
     "4447": {
       "events": {},
       "links": {},
-      "address": "0x653691e6b716ae259325011ede0eec3e575ef8c6",
-      "transactionHash": "0x14893562b8a54ae0631e69452886a1b5474230a6006e29823e59ec792c548f8d"
-    },
-    "1523386103285": {
-      "events": {},
-      "links": {},
       "address": "0x8cdaf0cd259887258bc13a92c0a6da92698644c0",
-      "transactionHash": "0x47d556b0685447ab566f873c248ad00ae84625a482ab96ae3599364e751a99db"
+      "transactionHash": "0xfdf6d945928a1fe5bcf4afd7b4b56622c63c7ed3c74dbe97ce3f556a7a0041d3"
     }
   },
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-04-10T18:48:36.176Z"
+  "updatedAt": "2018-04-10T19:02:50.901Z"
 }

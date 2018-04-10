@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.4.21;
 
 /// @title PatientRecords
 /// @author Nicolas Frega - <frega.nicolas@gmail.com>
@@ -121,7 +121,7 @@ contract PatientRecords is Ownable {
         payable
     {
         if (msg.value > 0)
-            Deposit(msg.sender, msg.value);
+            emit Deposit(msg.sender, msg.value);
     }
 
     /*
@@ -157,7 +157,7 @@ contract PatientRecords is Ownable {
         notNull(_hospital)
     {
         isHospital[_hospital] = true;
-        HospitalAddition(_hospital);
+        emit HospitalAddition(_hospital);
     }
 
     /// @dev Allows to remove a hospital in the network.
@@ -168,7 +168,7 @@ contract PatientRecords is Ownable {
         hospitalExist(_hospital)
     {
         isHospital[_hospital] = false;
-        HospitalRemoval(_hospital);
+        emit HospitalRemoval(_hospital);
     }
 
     /// @dev Allows to add a new patient in the network.
@@ -181,7 +181,7 @@ contract PatientRecords is Ownable {
         notNull(_patient)
     {
         isPatient[_patient] = true;
-        PatientAddition(_patient);
+        emit PatientAddition(_patient);
     }
 
     /// @dev Allows to remove a patient in the network.
@@ -192,7 +192,7 @@ contract PatientRecords is Ownable {
         patientExist(_patient)
     {
         isPatient[_patient] = false;
-        PatientRemoval(_patient);
+        emit PatientRemoval(_patient);
     }
 
     /// @dev Allows to add a patient record in the network.
@@ -222,7 +222,7 @@ contract PatientRecords is Ownable {
         dateRanges[recordCount].admissionDate = _admissionDate;
         dateRanges[recordCount].dischargeDate = _dischargeDate;
 
-        PatientRecordAdded(recordCount, _patientAddress);
+        emit PatientRecordAdded(recordCount, _patientAddress);
 
         recordCount += 1;
     }
@@ -242,8 +242,7 @@ contract PatientRecords is Ownable {
         address hostpitalInRecord = records[_recordID][msg.sender].hospital;
         mappingByName[hostpitalInRecord][_name] += 1;
 
-        NameAddedToRecords(_recordID, msg.sender);
-
+        emit NameAddedToRecords(_recordID, msg.sender);
     }
 
     /// @dev Allows a Hospital to retrieve the record for a patient.

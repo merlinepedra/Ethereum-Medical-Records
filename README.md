@@ -7,7 +7,60 @@
 
 </div>
 
+A hospital/patient medical record smart contract on Ethereum.
 Built with [Truffle](http://truffleframework.com/) and [zeppelin-solidity](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/ownership/Ownable.sol).
+
+## Requirements
+A Medical Record System (contract deployer) keeps records of patient stays, including admission date, discharge date, and visit reason code:
+
+```javascript
+struct Records {
+    bool providedName;
+    string name;
+    address patient;
+    address hospital;
+    uint256 admissionDate;
+    uint256 dischargeDate;
+    uint256 visitReason;
+}
+```
+Hospitals within the network:
+
+```javascript
+mapping (address => bool) public isHospital;
+```
+Can access these records if and only if a patient provides their name:
+
+```javascript
+/// @dev Allows a patient to add their name to the record in the network.
+/// @param _recordID ID of the patient specific record.
+/// @param _name Name for the patient
+function addName(uint256 _recordID, string _name)
+    public
+    patientExist(msg.sender)
+    onlyPatient(_recordID)
+    recordExists(_recordID, msg.sender)
+    notEmpty(_name)
+{
+    records[_recordID][msg.sender].providedName = true;
+    records[_recordID][msg.sender].name = _name;
+    address hostpitalInRecord = records[_recordID][msg.sender].hospital;
+    mappingByName[hostpitalInRecord][_name] += 1;
+
+    emit NameAddedToRecords(_recordID, msg.sender);
+}
+```
+After a patient provides their name, Hospitals can access their matching records:
+
+```javascript
+function getRecord(uint _recordID, address _patientAddress)
+  public
+  recordExists(_recordID, _patientAddress)
+  patientProvidedName(_recordID, _patientAddress)
+  onlyHospital(_recordID, _patientAddress)
+  view
+```
+Hospital can also search by patient name to see how many records they currently have:
 
 
 ## Install
