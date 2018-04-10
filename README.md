@@ -10,7 +10,7 @@
 A hospital/patient medical record smart contract on Ethereum.
 Built with [Truffle](http://truffleframework.com/) and [zeppelin-solidity](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/ownership/Ownable.sol).
 
-## Requirements
+## Scope
 A Medical Record System (contract deployer) keeps records of patient stays, including admission date, discharge date, and visit reason code:
 
 ```javascript
@@ -50,7 +50,7 @@ function addName(uint256 _recordID, string _name)
     emit NameAddedToRecords(_recordID, msg.sender);
 }
 ```
-After a patient provides their name, Hospitals can access their matching records:
+After a patient provides their name, hospitals can access their matching records:
 
 ```javascript
 function getRecord(uint _recordID, address _patientAddress)
@@ -58,9 +58,9 @@ function getRecord(uint _recordID, address _patientAddress)
   recordExists(_recordID, _patientAddress)
   patientProvidedName(_recordID, _patientAddress)
   onlyHospital(_recordID, _patientAddress)
-  view
+  view {...}
 ```
-Hospital can also search by patient name to see how many records they currently have:
+Hospitals can also search by patient name to see how many records they currently have:
 
 ```javascript
 /// @dev Allows a Hospital to view the number of records for a patient.

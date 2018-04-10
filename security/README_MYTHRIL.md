@@ -2,15 +2,20 @@
 Security analysis performed using [Mythril](https://github.com/NFhbar/mythril)
 
 ## To run Mythril Analysis Tool
+Install Mythril
+```
+$ pip3 install mythril
+```
+Compile contracts:
 ```
 $ truffle compile
 ```
-then:
+Analyze contracts:
 ```
 $ myth --truffle
 ```
 
-## Results
+## Results for current build
 ```
 Analysis result for SafeMath: No issues found.
 Analysis result for Ownable: No issues found.
