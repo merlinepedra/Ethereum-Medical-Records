@@ -113,16 +113,5 @@ contract('PatientRecords - Records Management', accounts => {
 
         })
 
-
-
-
-
-
-
-
-
-
-
-
   })
 })
