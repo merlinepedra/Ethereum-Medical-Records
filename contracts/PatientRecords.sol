@@ -289,6 +289,7 @@ contract PatientRecords is Ownable {
       /// @param to Ending date
       function getCurrentPatients(uint from, uint to)
         public
+        hospitalExist(msg.sender)
         view
         returns (uint _numberOfPatients)
       {
