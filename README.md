@@ -8,6 +8,12 @@ Version 0.0.1 - Rinkeby Network
 Contract can be found [here](https://rinkeby.etherscan.io/address/0xc2aa2051dc3af60e9a9f79f14d45febc61b2dbb3).
 The contract is owned by [owner](https://rinkeby.etherscan.io/address/0x54e3ed065393ee5ea695c84c124dafbbc5955d73).
 
+Add checks for non zero value for remove hoispital and patient
+add cost estimates for functions in separate tests
+
+ganache-cli -p 9545 -m 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat'
+
+
 ## Install
 Clone repo to local machine, then:
 ```

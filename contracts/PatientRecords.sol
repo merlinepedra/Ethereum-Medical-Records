@@ -42,8 +42,14 @@ contract PatientRecords is Ownable {
         string name;
         address patient;
         address hospital;
-        uint256 admissionDate;
-        uint256 dischargeDate;
+        string admissionDateIv;
+        string admissionDateEphem;
+        string admissionDateCipher;
+        string admissionDateMac;
+        string dischargeDateIv;
+        string dischargeDateEphem;
+        string dischargeDateCipher;
+        string dischargeDateMac;
         uint256 visitReason;
     }
 
@@ -198,14 +204,20 @@ contract PatientRecords is Ownable {
     /// @dev Allows to add a patient record in the network.
     /// @param _patientAddress address of the patient for record.
     /// @param _hospital address of the hospital for record.
-    /// @param _admissionDate date of admission, simple uint.
-    /// @param _dischargeDate date of discharge, simple uint.
+    /// @param _admissionDateIv date of admission, simple uint.
+    /// @param _dischargeDateIv date of discharge, simple uint.
     /// @param _visitReason internal code for reason for visit.
     function addRecord (
         address _patientAddress,
         address _hospital,
-        uint256 _admissionDate,
-        uint256 _dischargeDate,
+        string _admissionDateIv,
+        string _admissionDateEphem,
+        string _admissionDateCipher,
+        string _admissionDateMac,
+        string _dischargeDateIv,
+        string _dischargeDateEphem,
+        string _dischargeDateCipher,
+        string _dischargeDateMac,
         uint256 _visitReason)
         public
         onlyOwner
@@ -215,12 +227,15 @@ contract PatientRecords is Ownable {
         records[recordCount][_patientAddress].providedName = false;
         records[recordCount][_patientAddress].patient = _patientAddress;
         records[recordCount][_patientAddress].hospital = _hospital;
-        records[recordCount][_patientAddress].admissionDate = _admissionDate;
-        records[recordCount][_patientAddress].dischargeDate = _dischargeDate;
+        buildAdmissionDates(_patientAddress, _admissionDateIv, _admissionDateEphem, _admissionDateCipher, _admissionDateMac);
+        records[recordCount][_patientAddress].dischargeDateIv = _dischargeDateIv;
+        records[recordCount][_patientAddress].dischargeDateEphem = _dischargeDateEphem;
+        records[recordCount][_patientAddress].dischargeDateCipher = _dischargeDateCipher;
+        records[recordCount][_patientAddress].dischargeDateMac = _dischargeDateMac;
         records[recordCount][_patientAddress].visitReason = _visitReason;
 
-        dateRanges[recordCount].admissionDate = _admissionDate;
-        dateRanges[recordCount].dischargeDate = _dischargeDate;
+        /*dateRanges[recordCount].admissionDate = _admissionDate;
+        dateRanges[recordCount].dischargeDate = _dischargeDate;*/
 
         PatientRecordAdded(recordCount, _patientAddress);
 
@@ -258,14 +273,26 @@ contract PatientRecords is Ownable {
       returns (
         string _name,
         address _hospital,
-        uint256 _admissionDate,
-        uint256 _dischargeDate,
+        string _admissionDateIv,
+        string _admissionDateEphem,
+        string _admissionDateCipher,
+        string _admissionDateMac,
+        string _dischargeDateIv,
+        string _dischargeDateEphem,
+        string _dischargeDateCipher,
+        string _dischargeDateMac,
         uint256 _visitReason)
       {
          _name = records[_recordID][_patientAddress].name;
          _hospital = records[_recordID][_patientAddress].hospital;
-         _admissionDate = records[_recordID][_patientAddress].admissionDate;
-         _dischargeDate = records[_recordID][_patientAddress].dischargeDate;
+         _admissionDateIv = records[recordCount][_patientAddress].admissionDateIv;
+         _admissionDateEphem = records[recordCount][_patientAddress].admissionDateEphem;
+         _admissionDateCipher = records[recordCount][_patientAddress].admissionDateCipher;
+         _admissionDateMac = records[recordCount][_patientAddress].admissionDateMac;
+         _dischargeDateIv = records[recordCount][_patientAddress].dischargeDateIv;
+         _dischargeDateEphem = records[recordCount][_patientAddress].dischargeDateEphem;
+         _dischargeDateCipher = records[recordCount][_patientAddress].dischargeDateCipher;
+         _dischargeDateMac = records[recordCount][_patientAddress].dischargeDateMac;
          _visitReason = records[_recordID][_patientAddress].visitReason;
       }
 
@@ -285,10 +312,8 @@ contract PatientRecords is Ownable {
             return 0;
         }
 
-      /// @dev Allows a Hospital to view the number of patients on a given date range.
-      /// @param from Starting date
-      /// @param to Ending date
-      function getCurrentPatients(uint from, uint to)
+
+      /*function getCurrentPatients(uint from, uint to)
         public
         view
         returns (uint _numberOfPatients)
@@ -299,6 +324,25 @@ contract PatientRecords is Ownable {
           if(dateRanges[i].admissionDate >= from && dateRanges[i].dischargeDate <= to)
             _numberOfPatients += 1;
           }
+      }*/
+
+      /*
+       * Internal functions
+       */
+
+      function buildAdmissionDates(
+        address _patientAddress,
+        string _admissionDateIv,
+        string _admissionDateEphem,
+        string _admissionDateCipher,
+        string _admissionDateMac)
+          internal
+          view
+      {
+        records[recordCount][_patientAddress].admissionDateIv = _admissionDateIv;
+        records[recordCount][_patientAddress].admissionDateEphem = _admissionDateEphem;
+        records[recordCount][_patientAddress].admissionDateCipher = _admissionDateCipher;
+        records[recordCount][_patientAddress].admissionDateMac = _admissionDateMac;
       }
 
 }
