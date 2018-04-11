@@ -3,6 +3,7 @@
 <div>
 
 [![Build Status](https://travis-ci.org/NFhbar/Ethereum-Medical-Records.png?branch=master)](https://travis-ci.org/NFhbar/Ethereum-Medical-Records)
+[![NSP Status](https://nodesecurity.io/orgs/nicolas-frega/projects/55baa4ae-3179-40b3-841d-a0388baf15b2/badge)](https://nodesecurity.io/orgs/nicolas-frega/projects/55baa4ae-3179-40b3-841d-a0388baf15b2)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 </div>
