@@ -32,8 +32,8 @@ contract PatientRecords is Ownable {
     */
     mapping (address => bool) public isPatient;
     mapping (address => bool) public isHospital;
-    mapping (uint256 => mapping (address => Records)) public records;
-    mapping (uint256 => dateRange) public dateRanges;
+    mapping (uint256 => mapping (address => Records)) records;
+    mapping (uint256 => dateRange) dateRanges;
     mapping (address => mapping (string => uint256)) mappingByName;
     uint256 public recordCount = 0;
 
