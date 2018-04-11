@@ -3,7 +3,7 @@ pragma solidity ^0.4.21;
 /// @title PatientRecords
 /// @author Nicolas Frega - <frega.nicolas@gmail.com>
 /// Allows Medical Record System to maintain records of patients in their network.
-/// Records can be accessed and decrypted by Hospitals if and only if patient provides name.
+/// Records can be accessed by Hospitals if and only if patient provides name.
 
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
