@@ -4,11 +4,14 @@ pragma solidity ^0.4.21;
 /// @author Nicolas Frega - <frega.nicolas@gmail.com>
 /// Allows Medical Record System to maintain records of patients in their network.
 /// Records can be accessed by Hospitals if and only if patient provides name.
+/// Patients are rewarded with erc20 tokens for providing their name
 
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import './InterfacePatientRecords.sol';
+import './SpringToken.sol';
+import './TokenDestructible.sol';
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 
-contract PatientRecords is Ownable {
+contract PatientRecords is InterfacePatientRecords, TokenDestructible {
   using SafeMath for uint256;
 
     /*
@@ -21,6 +24,8 @@ contract PatientRecords is Ownable {
     event PatientRemoval(address patient);
     event PatientRecordAdded(uint256 recordID, address patientAddress);
     event NameAddedToRecords(uint256 recordID, address patientAddress);
+    event TokenRewardSet(uint256 tokenReward);
+    event PatientPaid(address patientAddress);
 
     /*
     * Constans
@@ -30,12 +35,15 @@ contract PatientRecords is Ownable {
     /*
     * Storage
     */
+    SpringToken public springToken;
     mapping (address => bool) public isPatient;
     mapping (address => bool) public isHospital;
     mapping (uint256 => mapping (address => Records)) records;
     mapping (uint256 => dateRange) dateRanges;
     mapping (address => mapping (string => uint256)) mappingByName;
     uint256 public recordCount = 0;
+    uint256 public tokenRewardAmount;
+    address public tokenAddress;
 
     struct Records {
         bool providedName;
@@ -113,15 +121,24 @@ contract PatientRecords is Ownable {
       _;
     }
 
+    modifier patientNotProvidedName(uint256 recordId, address patient) {
+      require(records[recordId][patient].providedName == false);
+      _;
+    }
 
+    modifier higherThanZero(uint256 _uint) {
+        require(_uint > 0);
+        _;
+    }
 
     /// @dev Fallback function allows to deposit ether.
     function()
         public
         payable
     {
-        if (msg.value > 0)
+        if (msg.value > 0) {
             emit Deposit(msg.sender, msg.value);
+          }
     }
 
     /*
@@ -137,14 +154,19 @@ contract PatientRecords is Ownable {
     {
         uint i;
         for (i=0; i < _hospitals.length; i++) {
-            require(!isHospital[_hospitals[i]] && _hospitals[i] != 0);
+            require(_hospitals[i] != 0x0);
             isHospital[_hospitals[i]] = true;
         }
 
         for (i=0; i < _patients.length; i++) {
-            require(!isPatient[_patients[i]] && _patients[i] != 0);
+            require(!isHospital[_patients[i]]);
+            require(_patients[i] != 0x0);
             isPatient[_patients[i]] = true;
         }
+
+        setSpringToken(new SpringToken());
+        uint256 initialReward = 1000;
+        setSpringTokenReward(initialReward);
     }
 
     /// @dev Allows to add a new hospital in the network.
@@ -236,11 +258,14 @@ contract PatientRecords is Ownable {
         onlyPatient(_recordID)
         recordExists(_recordID, msg.sender)
         notEmpty(_name)
+        patientNotProvidedName(_recordID, msg.sender)
     {
         records[_recordID][msg.sender].providedName = true;
         records[_recordID][msg.sender].name = _name;
         address hostpitalInRecord = records[_recordID][msg.sender].hospital;
         mappingByName[hostpitalInRecord][_name] += 1;
+
+        payPatient(msg.sender);
 
         emit NameAddedToRecords(_recordID, msg.sender);
     }
@@ -299,6 +324,53 @@ contract PatientRecords is Ownable {
           if(dateRanges[i].admissionDate >= from && dateRanges[i].dischargeDate <= to)
             _numberOfPatients += 1;
           }
+      }
+
+      /// @dev sets the amount of Spring token rewards for providing name.
+      /// @param _tokenReward Amount of tokens to reward patient.
+      function setSpringTokenReward(uint256 _tokenReward)
+        public
+        onlyOwner
+        higherThanZero(_tokenReward)
+      {
+        tokenRewardAmount = _tokenReward;
+        emit TokenRewardSet(_tokenReward);
+      }
+
+      /// @dev gets the balance of patient.
+      /// @param _patientAddress address of patient.
+      /// @return Returns patient balance.
+      function getPatientBalance(address _patientAddress)
+          public
+          onlyOwner
+          constant
+          returns (uint256)
+      {
+          return springToken.balanceOf(_patientAddress);
+      }
+
+      /*
+      * Internal functions
+      */
+      /// @dev sets the patient token reward contract.
+      /// @param _newspringToken Address of patient token.
+      function setSpringToken(address _newspringToken)
+        internal
+        onlyOwner
+        notNull(_newspringToken)
+      {
+        springToken = SpringToken(_newspringToken);
+        tokenAddress = address(springToken);
+      }
+
+      /// @dev pays a patient for providing their name.
+      /// @param _patientAddress to receive tokens.
+      function payPatient(address _patientAddress)
+        private
+        notNull(_patientAddress)
+      {
+        springToken.transfer(_patientAddress, tokenRewardAmount);
+        emit PatientPaid(_patientAddress);
       }
 
 }

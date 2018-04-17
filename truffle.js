@@ -1,17 +1,17 @@
-require('dotenv').config();
+require('dotenv').config()
 require('babel-register')({
   ignore: /node_modules\/(?!zeppelin-solidity\/test\/helpers)/
-});
-require('babel-polyfill');
+})
+require('babel-polyfill')
 
-const Web3 = require("web3");
-const web3 = new Web3();
-const WalletProvider = require("truffle-wallet-provider");
-const Wallet = require('ethereumjs-wallet');
+const Web3 = require("web3")
+const web3 = new Web3()
+const WalletProvider = require("truffle-wallet-provider")
+const Wallet = require('ethereumjs-wallet')
 
-var rinkebyPrivateKey = new Buffer(process.env["RINKEBY_PRIVATE_KEY"], "hex");
-var rinkebyWallet = Wallet.fromPrivateKey(rinkebyPrivateKey);
-var rinkebyProvider = new WalletProvider(rinkebyWallet, "https://rinkeby.infura.io/");
+const rinkebyPrivateKey = new Buffer(process.env["RINKEBY_PRIVATE_KEY"], "hex")
+const rinkebyWallet = Wallet.fromPrivateKey(rinkebyPrivateKey)
+const rinkebyProvider = new WalletProvider(rinkebyWallet, "https://rinkeby.infura.io/")
 
 module.exports = {
   migrations_directory: "./migrations",
@@ -20,6 +20,13 @@ module.exports = {
       host: "localhost",
       port: 9545,
       network_id: "*" // Match any network id
+    },
+    coverage: {
+      host: "localhost",
+      network_id: "*",
+      port: 9545,         // <-- If you change this, also set the port option in .solcover.js.
+      gas: 0xfffffffffff, // <-- Use this high gas value
+      gasPrice: 0x01      // <-- Use this low gas price
     },
     ganache: {
       host: "127.0.0.1",
@@ -42,5 +49,8 @@ module.exports = {
       enabled: true,
       runs: 500
     }
+  },
+  mocha: {
+    enableTimeouts: false
   }
-};
+}

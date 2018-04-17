@@ -42,17 +42,34 @@ function addName(uint256 _recordID, string _name)
     onlyPatient(_recordID)
     recordExists(_recordID, msg.sender)
     notEmpty(_name)
+    patientNotProvidedName(_recordID, msg.sender)
 {
     records[_recordID][msg.sender].providedName = true;
     records[_recordID][msg.sender].name = _name;
     address hostpitalInRecord = records[_recordID][msg.sender].hospital;
     mappingByName[hostpitalInRecord][_name] += 1;
 
+    payPatient(msg.sender);
+
     emit NameAddedToRecords(_recordID, msg.sender);
 }
-```
-After a patient provides their name, hospitals can access their matching records:
 
+```
+
+As an incentive to share their name, patients get paid in [tokens](https://github.com/NFhbar/Ethereum-Medical-Records/tree/master/contracts/SpringToken.sol) when they share their name:
+```javascript
+/// @dev pays a patient for providing their name.
+/// @param _patientAddress to receive tokens.
+function payPatient(address _patientAddress)
+  private
+  notNull(_patientAddress)
+{
+  patientToken.transfer(_patientAddress, tokenRewardAmount);
+  emit PatientPaid(_patientAddress);
+}
+```
+
+After patients share their name, hospitals can access their matching records:
 ```javascript
 function getRecord(uint _recordID, address _patientAddress)
   public
@@ -61,8 +78,8 @@ function getRecord(uint _recordID, address _patientAddress)
   onlyHospital(_recordID, _patientAddress)
   view {...}
 ```
-Hospitals can also search by patient name to see how many records they currently have:
 
+Hospitals can also search by patient name to see how many records they currently have:
 ```javascript
 /// @dev Allows a Hospital to view the number of records for a patient.
 /// @param _name Name for the patient
@@ -105,11 +122,23 @@ Since records cannot be accessed until a patient provides their name, and dates 
 associated with ethereum addresses, the time range is essentially private since patients
 cannot be mapped to their current stay until they provide their name.
 
+The contract can be [destroyed](https://github.com/NFhbar/Ethereum-Medical-Records/tree/master/contracts/TokenDestructible.sol) and the remaining token balance is returned to the owner of the contract.
+
 ## Install
 Clone repo:
 ```
 git clone git@github.com:NFhbar/Ethereum-Medical-Records.git
 ```
+
+Create a new ```.env``` file in root directory and add your private key:
+```
+RINKEBY_PRIVATE_KEY="MyPrivateKeyHere..."
+```
+If you don't have a private key, you can use one provided by Ganache (for development only!):
+```
+RINKEBY_PRIVATE_KEY="c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"
+```
+
 then:
 ```
 npm install
@@ -130,14 +159,27 @@ To test:
 ```
 truffle(develop)> test
 ```
+or
+```
+npm run test
+```
 
 ## Security Analysis
+### Mythril
 Security analysis performed using [Mythril](https://github.com/NFhbar/mythril).
 Results [here](https://github.com/NFhbar/Ethereum-Medical-Records/blob/master/security/README_MYTHRIL.md).
 
+### Solidity Coverage
+To run [Solidity Coverage reports](https://github.com/sc-forks/solidity-coverage):
+```
+$ npm run coverage
+```
+Keep in mind solidity-coverage now expects a globally installed truffle.
+Coverage report available [here](https://github.com/NFhbar/Ethereum-Medical-Records/blob/master/coverage).
+
 ## Remix
 
-To test in [Remix](http://remix.ethereum.org/) simply load this [gist](https://gist.github.com/NFhbar/551845ee58b4d54418d0665ed72d326a).
+To test in [Remix](http://remix.ethereum.org/) simply load this [gist](https://gist.github.com/NFhbar/5394dcb4ee4147abeb25f4fe503549f9).
 
 Parameters for constructor in Remix:
 ```
@@ -151,6 +193,25 @@ When migrating
 Error: Attempting to run transaction which calls a contract function, but recipient address 0x8cdaf0cd259887258bc13a92c0a6da92698644c0 is not a contract address
 ```
 Solution: delete contents of /build/contracts and recompile.
+
+### Not Enough Funds during test
+When testing in truffle develop
+```
+Error: sender doesn't have enough funds to send tx.
+```
+Solution: restart truffle develop.
+Notes: truffle does not reset accounts balance on multiple runs.
+
+### Solidity Coverage testrpc ghost process
+After running solidity-coverage, testrpc remains a ghost process.
+Solution: kill it with:
+```
+$ npm run stop
+```
+and run coverage again:
+```
+$ npm run coverage
+```
 
 ## License
 [MIT](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/LICENSE)

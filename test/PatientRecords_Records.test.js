@@ -1,5 +1,5 @@
 const PatientRecords = artifacts.require('PatientRecords')
-import assertRevert from 'zeppelin-solidity/test/helpers/assertRevert'
+import assertRevert from './helpers/assertRevert'
 import expectThrow from './helpers/expectThrow'
 import utils from './helpers/utils'
 import records from './fixtures/records'
@@ -10,6 +10,8 @@ contract('PatientRecords - Records Management', accounts => {
     let confirm
     let currentRecordCount
     let name
+    const emptyName = ''
+    const value = web3.toWei('50', 'ether')
     const owner = accounts[0]
     const hospitals = [accounts[0], accounts[1]]
     const patients = [accounts[2], accounts[3]]
@@ -23,6 +25,14 @@ contract('PatientRecords - Records Management', accounts => {
         })
 
         it('Correctly perform Record Logic', async () => {
+          //Send some ETH to contract
+          await web3.eth.sendTransaction({
+             from: accounts[5],
+             to: patientRecords.address,
+             value: value,
+             gas: 1000000
+           })
+          assert(web3.eth.getBalance(patientRecords.address),value)
           //Allows for owner to add a patient record
           confirm = await patientRecords.addRecord(
             records[0].patient,
@@ -50,6 +60,9 @@ contract('PatientRecords - Records Management', accounts => {
           confirm = await patientRecords.addName(currentRecordCount.toNumber()-1, name, { from: patients[0] })
           eventEmitted = utils.getParamFromTxEvent(confirm, 'patientAddress', null, 'NameAddedToRecords')
           assert.equal(eventEmitted, patients[0])
+
+          //cannot get record for incorrect record 
+          await assertRevert(patientRecords.getRecord(currentRecordCount.toNumber(), accounts[5], { from: owner }))
 
           //Record can now be retrieved by Hospital
           confirm = await patientRecords.getRecord(currentRecordCount.toNumber()-1,records[0].patient, { from: owner })
@@ -98,7 +111,11 @@ contract('PatientRecords - Records Management', accounts => {
           confirm = await patientRecords.getRecordByName(name1, {from: owner})
           assert.equal(confirm, 0)
 
-          // Patients now provide their names and their records become available.
+          //fails if name field is empty
+          await assertRevert(patientRecords.addName(0, emptyName, { from: patients[0] }))
+          //fails if wrong patient tries to add their name to incorrect recordID
+          await assertRevert(patientRecords.addName(1, name1, { from: patients[0] }))
+          // Patients now provide their names and their records become available
           confirm = await patientRecords.addName(0, name1, { from: patients[0] })
           confirm = await patientRecords.addName(1, name2, { from: patients[1] })
           confirm = await patientRecords.addName(2, name2, { from: patients[1] })
@@ -110,7 +127,16 @@ contract('PatientRecords - Records Management', accounts => {
           confirm = await patientRecords.getRecordByName(name2, {from: hospitals[1]})
           assert.equal(confirm,2)
 
+        })
 
+        it('Fails to add incorrect records', async () => {
+          //Fails to add record if hospital is not in network
+          await assertRevert(patientRecords.addRecord(
+            records[0].patient,
+            accounts[9],
+            records[0].admissionDate,
+            records[0].dischargeDate,
+            records[0].visitReason, { from: owner }))
         })
 
   })

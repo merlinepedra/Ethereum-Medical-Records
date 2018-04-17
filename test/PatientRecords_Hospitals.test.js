@@ -1,6 +1,5 @@
 const PatientRecords = artifacts.require('PatientRecords')
-import assertRevert from 'zeppelin-solidity/test/helpers/assertRevert'
-import expectThrow from './helpers/expectThrow'
+import assertRevert from './helpers/assertRevert'
 import utils from './helpers/utils'
 
 contract('PatientRecords - Hospital and Patient Management', accounts => {
@@ -8,6 +7,7 @@ contract('PatientRecords - Hospital and Patient Management', accounts => {
     let eventEmitted
     let confirm
     const owner = accounts[0]
+    const invalid = "0x0"
     const hospitals = [accounts[0], accounts[1]]
     const patients = [accounts[2], accounts[3]]
 
@@ -65,8 +65,9 @@ contract('PatientRecords - Hospital and Patient Management', accounts => {
           await assertRevert(patientRecords.addPatient(accounts[1], { from:owner }))
         })
 
-
-
+        it('Fails to add hospital if address invalid', async () => {
+          await assertRevert(patientRecords.addHospital(invalid, { from: owner }))
+        })
 
   })
 })
