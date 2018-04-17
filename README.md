@@ -167,6 +167,7 @@ npm run test
 ## Security Analysis
 ### Mythril
 Security analysis performed using [Mythril](https://github.com/NFhbar/mythril).
+
 Results [here](https://github.com/NFhbar/Ethereum-Medical-Records/blob/master/security/README_MYTHRIL.md).
 
 ### Solidity Coverage
@@ -174,7 +175,8 @@ To run [Solidity Coverage reports](https://github.com/sc-forks/solidity-coverage
 ```
 $ npm run coverage
 ```
-Keep in mind solidity-coverage now expects a globally installed truffle.
+Keep in mind solidity-coverage now expects a globally installed Truffle.
+
 Coverage report available [here](https://github.com/NFhbar/Ethereum-Medical-Records/blob/master/coverage).
 
 ## Remix
