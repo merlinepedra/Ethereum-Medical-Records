@@ -11,7 +11,6 @@ contract('PatientRecords - Hospital and Patient Management', accounts => {
     const hospitals = [accounts[0], accounts[1]]
     const patients = [accounts[2], accounts[3]]
 
-
     describe('Adding and Removing Hospitals and Patients', async () => {
 
         beforeEach(async () => {
