@@ -57,7 +57,7 @@ function addName(uint256 _recordID, string _name)
 
 ```
 
-As an incentive to share their name, patients get paid in [tokens](https://github.com/NFhbar/Ethereum-Medical-Records/tree/master/contracts/SpringToken.sol) when they share their name:
+As an incentive to share their name, patients get paid in [tokens](./contracts/SpringToken.sol) when they share their name:
 ```javascript
 /// @dev pays a patient for providing their name.
 /// @param _patientAddress to receive tokens.
@@ -123,7 +123,7 @@ Since records cannot be accessed until a patient provides their name, and dates 
 associated with ethereum addresses, the time range is essentially private since patients
 cannot be mapped to their current stay until they provide their name.
 
-The contract can be [destroyed](https://github.com/NFhbar/Ethereum-Medical-Records/tree/master/contracts/TokenDestructible.sol) and the remaining token balance is returned to the owner of the contract.
+The contract can be [destroyed](./contracts/TokenDestructible.sol) and the remaining token balance is returned to the owner of the contract.
 
 ## Install
 Clone repo:
@@ -169,7 +169,7 @@ npm run test
 ### Mythril
 Security analysis performed using [Mythril](https://github.com/NFhbar/mythril).
 
-Results [here](https://github.com/NFhbar/Ethereum-Medical-Records/blob/master/security/README_MYTHRIL.md).
+Results [here](./security/README_MYTHRIL.md).
 
 ### Solidity Coverage
 To run [Solidity Coverage reports](https://github.com/sc-forks/solidity-coverage):
@@ -178,7 +178,7 @@ $ npm run coverage
 ```
 Keep in mind solidity-coverage now expects a globally installed Truffle.
 
-Coverage report available [here](https://github.com/NFhbar/Ethereum-Medical-Records/blob/master/coverage).
+Coverage report available [here](./coverage).
 
 ## Remix
 
@@ -187,6 +187,12 @@ To test in [Remix](http://remix.ethereum.org/) simply load this [gist](https://g
 Parameters for constructor in Remix:
 ```
 ["0xca35b7d915458ef540ade6068dfe2f44e8fa733c", "0x14723a09acff6d2a60dcdf7aa4aff308fddc160c"],["0x4b0897b0513fdc7c541b6d9d7e929c4e5364d2db", "0x583031d1113ad414f02576bd6afabfb302140225", "0xdd870fa1b7c4700f2bd7f44238821c26f7392148"]
+```
+
+## Lint
+To fix warnings:
+```
+$ npm run fix . --ext .js
 ```
 
 ## Issues/Bugs
@@ -217,4 +223,4 @@ $ npm run coverage
 ```
 
 ## License
-[MIT](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/LICENSE)
+[MIT](./LICENSE.md)

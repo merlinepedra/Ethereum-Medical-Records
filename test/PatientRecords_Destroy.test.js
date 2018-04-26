@@ -18,11 +18,11 @@ contract('PatientRecords - Destroys Contract', accounts => {
         it('Destroys the contract and sends remaining balance to owner', async () => {
             //Send some ETH to contract
             await web3.eth.sendTransaction({
-               from: accounts[0],
-               to: patientRecords.address,
-               value: value,
-               gas: 1000000
-             })
+                from: accounts[0],
+                to: patientRecords.address,
+                value: value,
+                gas: 1000000
+            })
             assert(web3.eth.getBalance(patientRecords.address),value)
             const tokenAddress = await patientRecords.tokenAddress.call({ from: accounts[0] })
             const tokenInstance = token.at(tokenAddress)
@@ -39,9 +39,9 @@ contract('PatientRecords - Destroys Contract', accounts => {
             try {
                 await patientRecords.owner.call({from: accounts[1]})
                 assert.fail('should have thrown before')
-              } catch (error) {
+            } catch (error) {
                 assert(error)
-              }
+            }
         })
     })
-  })
+})

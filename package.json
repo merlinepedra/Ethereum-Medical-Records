@@ -1,6 +1,6 @@
 {
   "name": "hospital_network",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "ethereum medical system records",
   "main": "truffle.js",
   "directories": {
@@ -9,8 +9,10 @@
   "scripts": {
     "ganache": "ganache-cli -p 9545 -m 'candy maple cake sugar pudding cream honey rich smooth crumble sweet treat' > /dev/null &",
     "stop": "sudo kill `sudo lsof -t -i:9545`",
-    "test": "npm run ganache sleep 5 && truffle test && npm run stop",
-    "coverage": "./node_modules/.bin/solidity-coverage"
+    "test": "npm run ganache sleep 5 && npm run lint ./ && truffle test && npm run stop",
+    "coverage": "./node_modules/.bin/solidity-coverage",
+    "fix": "eslint --fix",
+    "lint": "eslint"
   },
   "keywords": [
     "truffle",
@@ -23,20 +25,25 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
     "coveralls": "^3.0.0",
-    "dotenv": "^4.0.0",
-    "ethereumjs-wallet": "^0.6.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
     "ganache-cli": "^6.1.0",
-    "solidity-coverage": "^0.4.15",
-    "truffle": "^4.1.5",
-    "truffle-wallet-provider": "0.0.5"
+    "solidity-coverage": "^0.4.15"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
+    "ethereumjs-wallet": "^0.6.0",
+    "truffle": "^4.1.5",
+    "truffle-wallet-provider": "0.0.5",
     "zeppelin-solidity": "1.8.0"
   }
 }
