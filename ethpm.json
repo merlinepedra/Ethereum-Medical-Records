@@ -1,0 +1,14 @@
+{
+  "package_name": "hospital-network",
+  "version": "0.0.4",
+  "description": "ethereum medical system records",
+  "authors": [
+    "Nicolas Frega <frega.nicolas@gmail.com>"
+  ],
+  "keywords": [
+    "ethereum",
+    "medical records"
+  ],
+  "dependencies": {},
+  "license": "MIT"
+}

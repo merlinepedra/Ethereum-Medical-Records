@@ -12,6 +12,53 @@
 A hospital/patient medical record smart contract on Ethereum.
 Built with [Truffle](http://truffleframework.com/) and [zeppelin-solidity](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/ownership/Ownable.sol).
 
+## Install
+### ethpm
+As [ethpm](https://www.ethpm.com/registry/packages/45):
+```
+$ truffle install hospital-network@0.0.4
+```
+
+### Clone
+Clone repo:
+```
+git clone git@github.com:NFhbar/Ethereum-Medical-Records.git
+```
+
+Create a new ```.env``` file in root directory and add your private key:
+```
+RINKEBY_PRIVATE_KEY="MyPrivateKeyHere..."
+```
+If you don't have a private key, you can use one provided by Ganache (for development only!):
+```
+RINKEBY_PRIVATE_KEY="c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"
+```
+
+then:
+```
+npm install
+```
+To enter Truffle:
+```
+truffle develop
+```
+To compile:
+```
+truffle(develop)> compile
+```
+To migrate:
+```
+truffle(develop)> migrate
+```
+To test:
+```
+truffle(develop)> test
+```
+or
+```
+npm run test
+```
+
 ## Scope
 A Medical Record System (contract deployer) keeps records of patient stays, including admission date, discharge date, and visit reason code:
 
@@ -124,46 +171,6 @@ associated with ethereum addresses, the time range is essentially private since 
 cannot be mapped to their current stay until they provide their name.
 
 The contract can be [destroyed](./contracts/TokenDestructible.sol) and the remaining token balance is returned to the owner of the contract.
-
-## Install
-Clone repo:
-```
-git clone git@github.com:NFhbar/Ethereum-Medical-Records.git
-```
-
-Create a new ```.env``` file in root directory and add your private key:
-```
-RINKEBY_PRIVATE_KEY="MyPrivateKeyHere..."
-```
-If you don't have a private key, you can use one provided by Ganache (for development only!):
-```
-RINKEBY_PRIVATE_KEY="c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"
-```
-
-then:
-```
-npm install
-```
-To enter Truffle:
-```
-truffle develop
-```
-To compile:
-```
-truffle(develop)> compile
-```
-To migrate:
-```
-truffle(develop)> migrate
-```
-To test:
-```
-truffle(develop)> test
-```
-or
-```
-npm run test
-```
 
 ## Security Analysis
 ### Mythril

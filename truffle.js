@@ -13,6 +13,10 @@ const rinkebyPrivateKey = new Buffer(process.env['RINKEBY_PRIVATE_KEY'], 'hex')
 const rinkebyWallet = Wallet.fromPrivateKey(rinkebyPrivateKey)
 const rinkebyProvider = new WalletProvider(rinkebyWallet, 'https://rinkeby.infura.io/')
 
+var ropstenPrivateKey = new Buffer(process.env['ROPSTEN_PRIVATE_KEY'], 'hex')
+var ropstenWallet = Wallet.fromPrivateKey(ropstenPrivateKey)
+var ropstenProvider = new WalletProvider(ropstenWallet, 'https://ropsten.infura.io/')
+
 module.exports = {
     migrations_directory: './migrations',
     networks: {
@@ -33,6 +37,16 @@ module.exports = {
             port: 7545,
             network_id: 5777
         },
+        ropsten: {
+           provider: ropstenProvider,
+           // You can get the current gasLimit by running
+           // truffle deploy --network rinkeby
+           // truffle(rinkeby)> web3.eth.getBlock("pending", (error, result) =>
+           //   console.log(result.gasLimit))
+           gas: 4600000,
+           gasPrice: web3.toWei('20', 'gwei'),
+           network_id: 3,
+       },
         rinkeby: {
             provider: rinkebyProvider,
             // You can get the current gasLimit by running
