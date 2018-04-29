@@ -13,9 +13,9 @@ const rinkebyPrivateKey = new Buffer(process.env['RINKEBY_PRIVATE_KEY'], 'hex')
 const rinkebyWallet = Wallet.fromPrivateKey(rinkebyPrivateKey)
 const rinkebyProvider = new WalletProvider(rinkebyWallet, 'https://rinkeby.infura.io/')
 
-var ropstenPrivateKey = new Buffer(process.env['ROPSTEN_PRIVATE_KEY'], 'hex')
-var ropstenWallet = Wallet.fromPrivateKey(ropstenPrivateKey)
-var ropstenProvider = new WalletProvider(ropstenWallet, 'https://ropsten.infura.io/')
+const ropstenPrivateKey = new Buffer(process.env['ROPSTEN_PRIVATE_KEY'], 'hex')
+const ropstenWallet = Wallet.fromPrivateKey(ropstenPrivateKey)
+const ropstenProvider = new WalletProvider(ropstenWallet, 'https://ropsten.infura.io/')
 
 module.exports = {
     migrations_directory: './migrations',
