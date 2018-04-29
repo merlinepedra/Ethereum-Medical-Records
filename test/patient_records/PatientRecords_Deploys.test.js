@@ -1,5 +1,5 @@
 const PatientRecords = artifacts.require('PatientRecords')
-import expectThrow from './helpers/expectThrow'
+import expectThrow from '../helpers/expectThrow'
 
 contract('PatientRecords - Contract Deployment', accounts => {
     let patientRecords

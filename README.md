@@ -194,6 +194,10 @@ To fix warnings:
 ```
 $ npm run fix . --ext .js
 ```
+For solium linter:
+```
+$ solium -d contracts
+```
 
 ## Issues/Bugs
 ### Wrong Contract Address

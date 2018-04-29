@@ -1,8 +1,8 @@
 const PatientRecords = artifacts.require('PatientRecords')
 const token = artifacts.require('SpringToken')
-import assertRevert from './helpers/assertRevert'
-import records from './fixtures/records'
-import utils from './helpers/utils'
+import assertRevert from '../helpers/assertRevert'
+import records from '../fixtures/records'
+import utils from '../helpers/utils'
 
 contract('PatientRecords - Token Management', accounts => {
     let patientRecords

@@ -11,8 +11,10 @@
     "stop": "sudo kill `sudo lsof -t -i:9545`",
     "test": "npm run ganache sleep 5 && npm run lint ./ && truffle test && npm run stop",
     "coverage": "./node_modules/.bin/solidity-coverage",
-    "fix": "eslint --fix",
-    "lint": "eslint"
+    "fix": "eslint ./test --fix",
+    "lint": "eslint",
+    "solium": "solium -d contracts/",
+    "solium:fix": "solium -d contracts/ --fix"
   },
   "keywords": [
     "truffle",
@@ -31,19 +33,23 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.0.0",
+    "chai-bignumber": "^2.0.0",
     "coveralls": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "ganache-cli": "^6.1.0",
-    "solidity-coverage": "^0.4.15"
+    "solidity-coverage": "^0.4.15",
+    "solium": "^1.1.6"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
     "ethereumjs-wallet": "^0.6.0",
+    "openzeppelin-solidity": "1.9.0",
     "truffle": "^4.1.5",
-    "truffle-wallet-provider": "0.0.5",
-    "zeppelin-solidity": "1.8.0"
+    "truffle-wallet-provider": "0.0.5"
   }
 }

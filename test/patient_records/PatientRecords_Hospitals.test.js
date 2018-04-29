@@ -1,6 +1,6 @@
 const PatientRecords = artifacts.require('PatientRecords')
-import assertRevert from './helpers/assertRevert'
-import utils from './helpers/utils'
+import assertRevert from '../helpers/assertRevert'
+import utils from '../helpers/utils'
 
 contract('PatientRecords - Hospital and Patient Management', accounts => {
     let patientRecords

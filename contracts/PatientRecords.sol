@@ -6,13 +6,13 @@ pragma solidity ^0.4.21;
 /// Records can be accessed by Hospitals if and only if patient provides name.
 /// Patients are rewarded with erc20 tokens for providing their name
 
-import './InterfacePatientRecords.sol';
-import './SpringToken.sol';
-import './TokenDestructible.sol';
-import 'zeppelin-solidity/contracts/math/SafeMath.sol';
+import "./InterfacePatientRecords.sol";
+import "./SpringToken.sol";
+import "./TokenDestructible.sol";
+import "./SafeMath.sol";
 
 contract PatientRecords is InterfacePatientRecords, TokenDestructible {
-  using SafeMath for uint256;
+    using SafeMath for uint256;
 
     /*
     * Events
@@ -56,16 +56,15 @@ contract PatientRecords is InterfacePatientRecords, TokenDestructible {
     }
 
     struct dateRange {
-      uint256 admissionDate;
-      uint256 dischargeDate;
+        uint256 admissionDate;
+        uint256 dischargeDate;
     }
 
     /*
     * Modifiers
     */
     modifier validParameters(uint count) {
-        require(count <= MAX_COUNT
-            && count != 0);
+        require(count <= MAX_COUNT && count != 0);
         _;
     }
 
@@ -106,8 +105,8 @@ contract PatientRecords is InterfacePatientRecords, TokenDestructible {
     }
 
     modifier onlyHospital(uint256 recordId, address _patientAddress) {
-      require(records[recordId][_patientAddress].hospital == msg.sender);
-      _;
+        require(records[recordId][_patientAddress].hospital == msg.sender);
+        _;
     }
 
     modifier recordExists(uint256 recordId, address patientAddress) {
@@ -117,13 +116,13 @@ contract PatientRecords is InterfacePatientRecords, TokenDestructible {
     }
 
     modifier patientProvidedName(uint256 recordId, address patient) {
-      require(records[recordId][patient].providedName == true);
-      _;
+        require(records[recordId][patient].providedName == true);
+        _;
     }
 
     modifier patientNotProvidedName(uint256 recordId, address patient) {
-      require(records[recordId][patient].providedName == false);
-      _;
+        require(records[recordId][patient].providedName == false);
+        _;
     }
 
     modifier higherThanZero(uint256 _uint) {
@@ -153,12 +152,12 @@ contract PatientRecords is InterfacePatientRecords, TokenDestructible {
         validParameters(_patients.length)
     {
         uint i;
-        for (i=0; i < _hospitals.length; i++) {
+        for (i = 0; i < _hospitals.length; i++) {
             require(_hospitals[i] != 0x0);
             isHospital[_hospitals[i]] = true;
         }
 
-        for (i=0; i < _patients.length; i++) {
+        for (i = 0; i < _patients.length; i++) {
             require(!isHospital[_patients[i]]);
             require(_patients[i] != 0x0);
             isPatient[_patients[i]] = true;
@@ -274,103 +273,104 @@ contract PatientRecords is InterfacePatientRecords, TokenDestructible {
     /// @param _recordID ID of the patient specific record.
     /// @param _patientAddress address of the patient for record.
     function getRecord(uint _recordID, address _patientAddress)
-      public
-      recordExists(_recordID, _patientAddress)
-      patientProvidedName(_recordID, _patientAddress)
-      onlyHospital(_recordID, _patientAddress)
-      view
-      returns (
-        string _name,
-        address _hospital,
-        uint256 _admissionDate,
-        uint256 _dischargeDate,
-        uint256 _visitReason)
-      {
-         _name = records[_recordID][_patientAddress].name;
-         _hospital = records[_recordID][_patientAddress].hospital;
-         _admissionDate = records[_recordID][_patientAddress].admissionDate;
-         _dischargeDate = records[_recordID][_patientAddress].dischargeDate;
-         _visitReason = records[_recordID][_patientAddress].visitReason;
-      }
+        public
+        recordExists(_recordID, _patientAddress)
+        patientProvidedName(_recordID, _patientAddress)
+        onlyHospital(_recordID, _patientAddress)
+        view
+        returns (
+            string _name,
+            address _hospital,
+            uint256 _admissionDate,
+            uint256 _dischargeDate,
+            uint256 _visitReason
+        )
+    {
+        _name = records[_recordID][_patientAddress].name;
+        _hospital = records[_recordID][_patientAddress].hospital;
+        _admissionDate = records[_recordID][_patientAddress].admissionDate;
+        _dischargeDate = records[_recordID][_patientAddress].dischargeDate;
+        _visitReason = records[_recordID][_patientAddress].visitReason;
+    }
 
-      /// @dev Allows a Hospital to view the number of records for a patient.
-      /// @param _name Name for the patient
-      function getRecordByName(string _name)
+    /// @dev Allows a Hospital to view the number of records for a patient.
+    /// @param _name Name for the patient
+    function getRecordByName(string _name)
         public
         hospitalExist(msg.sender)
         view
         returns (uint256 numberOfRecords)
-        {
-          if (mappingByName[msg.sender][_name] != 0) {
+    {
+        if (mappingByName[msg.sender][_name] != 0) {
             numberOfRecords = mappingByName[msg.sender][_name];
             return numberOfRecords;
-          }
-          else
-            return 0;
         }
+        else
+            return 0;
+    }
 
-      /// @dev Allows a Hospital to view the number of patients on a given date range.
-      /// @param from Starting date
-      /// @param to Ending date
-      function getCurrentPatients(uint from, uint to)
+    /// @dev Allows a Hospital to view the number of patients on a given date range.
+    /// @param from Starting date
+    /// @param to Ending date
+    function getCurrentPatients(uint from, uint to)
         public
         hospitalExist(msg.sender)
         view
         returns (uint _numberOfPatients)
-      {
+    {
         uint i;
         _numberOfPatients = 0;
-        for(i=0; i<recordCount; i++) {
-          if(dateRanges[i].admissionDate >= from && dateRanges[i].dischargeDate <= to)
+        for(i = 0; i < recordCount; i++) {
+            if(dateRanges[i].admissionDate >= from && dateRanges[i].dischargeDate <= to)
             _numberOfPatients += 1;
-          }
-      }
+        }
+    }
 
-      /// @dev sets the amount of Spring token rewards for providing name.
-      /// @param _tokenReward Amount of tokens to reward patient.
-      function setSpringTokenReward(uint256 _tokenReward)
+    /// @dev sets the amount of Spring token rewards for providing name.
+    /// @param _tokenReward Amount of tokens to reward patient.
+    function setSpringTokenReward(uint256 _tokenReward)
         public
         onlyOwner
         higherThanZero(_tokenReward)
-      {
+    {
         tokenRewardAmount = _tokenReward;
         emit TokenRewardSet(_tokenReward);
-      }
+    }
 
-      /// @dev gets the balance of patient.
-      /// @param _patientAddress address of patient.
-      /// @return Returns patient balance.
-      function getPatientBalance(address _patientAddress)
-          public
-          onlyOwner
-          constant
-          returns (uint256)
-      {
-          return springToken.balanceOf(_patientAddress);
-      }
+    /// @dev gets the balance of patient.
+    /// @param _patientAddress address of patient.
+    /// @return Returns patient balance.
+    function getPatientBalance(address _patientAddress)
+        public
+        onlyOwner
+        constant
+        returns (uint256)
+    {
+        return springToken.balanceOf(_patientAddress);
+    }
 
-      /*
-      * Internal functions
-      */
-      /// @dev sets the patient token reward contract.
-      /// @param _newspringToken Address of patient token.
-      function setSpringToken(address _newspringToken)
+    /*
+    * Internal functions
+    */
+    /// @dev sets the patient token reward contract.
+    /// @param _newspringToken Address of patient token.
+    function setSpringToken(address _newspringToken)
         internal
         onlyOwner
         notNull(_newspringToken)
-      {
+    {
         springToken = SpringToken(_newspringToken);
         tokenAddress = address(springToken);
-      }
+    }
 
-      /// @dev pays a patient for providing their name.
-      /// @param _patientAddress to receive tokens.
-      function payPatient(address _patientAddress)
+    /// @dev pays a patient for providing their name.
+    /// @param _patientAddress to receive tokens.
+    function payPatient(address _patientAddress)
         private
         notNull(_patientAddress)
-      {
+    {
         springToken.transfer(_patientAddress, tokenRewardAmount);
         emit PatientPaid(_patientAddress);
-      }
+    }
 
 }

@@ -134,17 +134,7 @@
 89
 90
 91
-92
-93
-94
-95
-96
-97</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+92</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -249,86 +239,81 @@ contract InterfacePatientRecords {
     function() public payable;
 &nbsp;
     /*
-     * Public functions
-     */
-     /// @dev Allows to add a new hospital in the network.
-     /// @param _hospital Address of new hospital.
-     function addHospital(address _hospital) public;
+    * Public functions
+    */
+    /// @dev Allows to add a new hospital in the network.
+    /// @param _hospital Address of new hospital.
+    function addHospital(address _hospital) public;
 &nbsp;
-     /// @dev Allows to remove a hospital in the network.
-     /// @param _hospital Address of hospital to remove.
-     function removeHospital(address _hospital) public;
+    /// @dev Allows to remove a hospital in the network.
+    /// @param _hospital Address of hospital to remove.
+    function removeHospital(address _hospital) public;
 &nbsp;
-     /// @dev Allows to add a new patient in the network.
-     /// @param _patient Address of new patient.
-     function addPatient(address _patient) public;
+    /// @dev Allows to add a new patient in the network.
+    /// @param _patient Address of new patient.
+    function addPatient(address _patient) public;
 &nbsp;
-     /// @dev Allows to remove a patient in the network.
-     /// @param _patient Address of patient to remove.
-     function removePatient(address _patient) public;
+    /// @dev Allows to remove a patient in the network.
+    /// @param _patient Address of patient to remove.
+    function removePatient(address _patient) public;
 &nbsp;
-     /// @dev Allows to add a patient record in the network.
-     /// @param _patientAddress address of the patient for record.
-     /// @param _hospital address of the hospital for record.
-     /// @param _admissionDate date of admission, simple uint.
-     /// @param _dischargeDate date of discharge, simple uint.
-     /// @param _visitReason internal code for reason for visit.
-     function addRecord
-        (
-           address _patientAddress,
-           address _hospital,
-           uint256 _admissionDate,
-           uint256 _dischargeDate,
-           uint256 _visitReason
-        )
-      public;
+    /// @dev Allows to add a patient record in the network.
+    /// @param _patientAddress address of the patient for record.
+    /// @param _hospital address of the hospital for record.
+    /// @param _admissionDate date of admission, simple uint.
+    /// @param _dischargeDate date of discharge, simple uint.
+    /// @param _visitReason internal code for reason for visit.
+    function addRecord(
+        address _patientAddress,
+        address _hospital,
+        uint256 _admissionDate,
+        uint256 _dischargeDate,
+        uint256 _visitReason) public;
 &nbsp;
-       /// @dev Allows a patient to add their name to the record in the network.
-       /// @param _recordID ID of the patient specific record.
-       /// @param _name Name for the patient
-       function addName(uint256 _recordID, string _name) public;
+    /// @dev Allows a patient to add their name to the record in the network.
+    /// @param _recordID ID of the patient specific record.
+    /// @param _name Name for the patient
+    function addName(uint256 _recordID, string _name) public;
 &nbsp;
-       /// @dev Allows a Hospital to retrieve the record for a patient.
-       /// @param _recordID ID of the patient specific record.
-       /// @param _patientAddress address of the patient for record.
-       function getRecord(uint _recordID, address _patientAddress) public view
-          returns
-          (
-           string _name,
-           address _hospital,
-           uint256 _admissionDate,
-           uint256 _dischargeDate,
-           uint256 _visitReason
-          );
+    /// @dev Allows a Hospital to retrieve the record for a patient.
+    /// @param _recordID ID of the patient specific record.
+    /// @param _patientAddress address of the patient for record.
+    function getRecord(uint _recordID, address _patientAddress) public view
+      returns(
+        string _name,
+        address _hospital,
+        uint256 _admissionDate,
+        uint256 _dischargeDate,
+        uint256 _visitReason);
 &nbsp;
-       /// @dev Allows a Hospital to view the number of records for a patient.
-       /// @param _name Name for the patient
-       function getRecordByName(string _name) public view returns (uint256 numberOfRecords);
+    /// @dev Allows a Hospital to view the number of records for a patient.
+    /// @param _name Name for the patient
+    function getRecordByName(string _name) public view returns (uint256 numberOfRecords);
 &nbsp;
-       /// @dev Allows a Hospital to view the number of patients on a given date range.
-       /// @param from Starting date
-       /// @param to Ending date
-       function getCurrentPatients(uint from, uint to) public view returns (uint _numberOfPatients);
+    /// @dev Allows a Hospital to view the number of patients on a given date range.
+    /// @param from Starting date
+    /// @param to Ending date
+    function getCurrentPatients(uint from, uint to) public view returns (uint _numberOfPatients);
 &nbsp;
-       /// @dev sets the amount of Spring token rewards for providing name.
-       /// @param _tokenReward Amount of tokens to reward patient.
-       function setSpringTokenReward(uint256 _tokenReward) public;
+    /// @dev sets the amount of Spring token rewards for providing name.
+    /// @param _tokenReward Amount of tokens to reward patient.
+    function setSpringTokenReward(uint256 _tokenReward) public;
 &nbsp;
-       /// @dev gets the balance of patient.
-       /// @param _patientAddress address of patient.
-       /// @return Returns patient balance.
-       function getPatientBalance(address _patientAddress) public constant returns (uint256);
+    /// @dev gets the balance of patient.
+    /// @param _patientAddress address of patient.
+    /// @return Returns patient balance.
+    function getPatientBalance(address _patientAddress) public constant returns (uint256);
 &nbsp;
-       /*
-       * Internal functions
-       */
-       /// @dev sets the patient token reward contract.
-       /// @param _newsprintToken Address of patient token.
-       function setSpringToken(address _newsprintToken) internal;
+    /*
+    * Internal functions
+    */
+    /// @dev sets the patient token reward contract.
+    /// @param _newsprintToken Address of patient token.
+    function setSpringToken(address _newsprintToken) internal;
 &nbsp;
-       /// @dev pays a patient for providing their name.
-       /// @param _patientAddress to receive tokens.
-       function payPatient(address _patientAddress) private;
+    /// @dev pays a patient for providing their name.
+    /// @param _patientAddress to receive tokens.
+    function payPatient(address _patientAddress) private;
 &nbsp;
 }
 &nbsp;</pre></td></tr>
@@ -337,7 +322,7 @@ contract InterfacePatientRecords {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 16 2018 19:36:28 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Apr 29 2018 12:43:37 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

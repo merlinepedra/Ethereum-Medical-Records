@@ -1,8 +1,8 @@
 const PatientRecords = artifacts.require('PatientRecords')
-import assertRevert from './helpers/assertRevert'
-import expectThrow from './helpers/expectThrow'
-import utils from './helpers/utils'
-import records from './fixtures/records'
+import assertRevert from '../helpers/assertRevert'
+import expectThrow from '../helpers/expectThrow'
+import utils from '../helpers/utils'
+import records from '../fixtures/records'
 
 contract('PatientRecords - Records Management', accounts => {
     let patientRecords
@@ -61,7 +61,7 @@ contract('PatientRecords - Records Management', accounts => {
             eventEmitted = utils.getParamFromTxEvent(confirm, 'patientAddress', null, 'NameAddedToRecords')
             assert.equal(eventEmitted, patients[0])
 
-            //cannot get record for incorrect record 
+            //cannot get record for incorrect record
             await assertRevert(patientRecords.getRecord(currentRecordCount.toNumber(), accounts[5], { from: owner }))
 
             //Record can now be retrieved by Hospital
