@@ -75,7 +75,7 @@ contract InterfacePatientRecords {
     /// @dev gets the balance of patient.
     /// @param _patientAddress address of patient.
     /// @return Returns patient balance.
-    function getPatientBalance(address _patientAddress) public constant returns (uint256);
+    function getPatientBalance(address _patientAddress) public view returns (uint256);
 
     /*
     * Internal functions

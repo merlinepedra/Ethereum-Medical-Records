@@ -343,7 +343,7 @@ contract PatientRecords is InterfacePatientRecords, TokenDestructible {
     function getPatientBalance(address _patientAddress)
         public
         onlyOwner
-        constant
+        view
         returns (uint256)
     {
         return springToken.balanceOf(_patientAddress);
