@@ -146,7 +146,7 @@ contract PatientRecords is InterfacePatientRecords, TokenDestructible {
     /// @dev Contract constructor sets initial hospitals and patients.
     /// @param _hospitals Address array of initial hospitals.
     /// @param _patients Address array of initial patients
-    function PatientRecords(address[] _hospitals, address[] _patients)
+    constructor(address[] _hospitals, address[] _patients)
         public
         validParameters(_hospitals.length)
         validParameters(_patients.length)

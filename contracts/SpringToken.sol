@@ -20,7 +20,7 @@ contract SpringToken is StandardToken, Ownable {
     /**
      * @dev Constructor that gives msg.sender all of existing tokens.
      */
-    function SpringToken() public {
+    constructor() public {
         totalSupply_ = INITIAL_SUPPLY;
         balances[msg.sender] = INITIAL_SUPPLY;
         emit Transfer(0x0, msg.sender, INITIAL_SUPPLY);

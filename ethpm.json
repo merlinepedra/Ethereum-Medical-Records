@@ -1,6 +1,6 @@
 {
   "package_name": "hospital-network",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "ethereum medical system records",
   "authors": [
     "Nicolas Frega <frega.nicolas@gmail.com>"

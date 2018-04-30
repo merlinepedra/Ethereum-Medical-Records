@@ -16,7 +16,7 @@ Built with [Truffle](http://truffleframework.com/) and [zeppelin-solidity](https
 ### ethpm
 As [ethpm](https://www.ethpm.com/registry/packages/45):
 ```
-$ truffle install hospital-network@0.0.4
+$ truffle install hospital-network@0.0.5
 ```
 
 ### Clone
