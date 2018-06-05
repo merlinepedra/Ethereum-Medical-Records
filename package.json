@@ -11,10 +11,10 @@
     "stop": "sudo kill `sudo lsof -t -i:9545`",
     "test": "npm run ganache sleep 5 && npm run lint ./ && truffle test && npm run stop",
     "coverage": "./node_modules/.bin/solidity-coverage",
-    "fix": "eslint ./test --fix",
-    "lint": "eslint ./",
-    "solium": "solium -d contracts/",
-    "solium:fix": "solium -d contracts/ --fix"
+    "lint:es:fix": "eslint ./test --fix",
+    "lint:es": "eslint ./",
+    "lint:solium": "solium -d contracts/",
+    "lint:solium:fix": "solium -d contracts/ --fix"
   },
   "keywords": [
     "truffle",

@@ -230,9 +230,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.21;\n\n/// @title InterfacePatientRecords\n/// @author Nicolas Frega - <frega.nicolas@gmail.com>\n/// Allows Medical Record System to maintain records of patients in their network.\n/// Records can be accessed by Hospitals if and only if patient provides name.\n/// Patients are rewarded with erc20 tokens for providing their name\n\ncontract InterfacePatientRecords {\n\n    /// @dev Fallback function allows to deposit ether.\n    function() public payable;\n\n    /*\n    * Public functions\n    */\n    /// @dev Allows to add a new hospital in the network.\n    /// @param _hospital Address of new hospital.\n    function addHospital(address _hospital) public;\n\n    /// @dev Allows to remove a hospital in the network.\n    /// @param _hospital Address of hospital to remove.\n    function removeHospital(address _hospital) public;\n\n    /// @dev Allows to add a new patient in the network.\n    /// @param _patient Address of new patient.\n    function addPatient(address _patient) public;\n\n    /// @dev Allows to remove a patient in the network.\n    /// @param _patient Address of patient to remove.\n    function removePatient(address _patient) public;\n\n    /// @dev Allows to add a patient record in the network.\n    /// @param _patientAddress address of the patient for record.\n    /// @param _hospital address of the hospital for record.\n    /// @param _admissionDate date of admission, simple uint.\n    /// @param _dischargeDate date of discharge, simple uint.\n    /// @param _visitReason internal code for reason for visit.\n    function addRecord(\n        address _patientAddress,\n        address _hospital,\n        uint256 _admissionDate,\n        uint256 _dischargeDate,\n        uint256 _visitReason) public;\n\n    /// @dev Allows a patient to add their name to the record in the network.\n    /// @param _recordID ID of the patient specific record.\n    /// @param _name Name for the patient\n    function addName(uint256 _recordID, string _name) public;\n\n    /// @dev Allows a Hospital to retrieve the record for a patient.\n    /// @param _recordID ID of the patient specific record.\n    /// @param _patientAddress address of the patient for record.\n    function getRecord(uint _recordID, address _patientAddress) public view\n      returns(\n        string _name,\n        address _hospital,\n        uint256 _admissionDate,\n        uint256 _dischargeDate,\n        uint256 _visitReason);\n\n    /// @dev Allows a Hospital to view the number of records for a patient.\n    /// @param _name Name for the patient\n    function getRecordByName(string _name) public view returns (uint256 numberOfRecords);\n\n    /// @dev Allows a Hospital to view the number of patients on a given date range.\n    /// @param from Starting date\n    /// @param to Ending date\n    function getCurrentPatients(uint from, uint to) public view returns (uint _numberOfPatients);\n\n    /// @dev sets the amount of Spring token rewards for providing name.\n    /// @param _tokenReward Amount of tokens to reward patient.\n    function setSpringTokenReward(uint256 _tokenReward) public;\n\n    /// @dev gets the balance of patient.\n    /// @param _patientAddress address of patient.\n    /// @return Returns patient balance.\n    function getPatientBalance(address _patientAddress) public view returns (uint256);\n\n    /*\n    * Internal functions\n    */\n    /// @dev sets the patient token reward contract.\n    /// @param _newsprintToken Address of patient token.\n    function setSpringToken(address _newsprintToken) internal;\n\n    /// @dev pays a patient for providing their name.\n    /// @param _patientAddress to receive tokens.\n    function payPatient(address _patientAddress) private;\n\n}\n",
-  "sourcePath": "/home/nico/Desktop/public_repos/hospital_network/contracts/InterfacePatientRecords.sol",
+  "sourcePath": "/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/InterfacePatientRecords.sol",
   "ast": {
-    "absolutePath": "/home/nico/Desktop/public_repos/hospital_network/contracts/InterfacePatientRecords.sol",
+    "absolutePath": "/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/InterfacePatientRecords.sol",
     "exportedSymbols": {
       "InterfacePatientRecords": [
         271
@@ -1424,7 +1424,7 @@
     "src": "0:3653:3"
   },
   "legacyAST": {
-    "absolutePath": "/home/nico/Desktop/public_repos/hospital_network/contracts/InterfacePatientRecords.sol",
+    "absolutePath": "/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/InterfacePatientRecords.sol",
     "exportedSymbols": {
       "InterfacePatientRecords": [
         271
@@ -2617,9 +2617,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-04T16:23:52.243Z"
+  "updatedAt": "2018-06-05T06:03:28.281Z"
 }

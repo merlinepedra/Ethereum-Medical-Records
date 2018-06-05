@@ -85,9 +85,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.21;\n\n/**\n * @title ERC20Basic\n * @dev Simpler version of ERC20 interface\n * @dev see https://github.com/ethereum/EIPs/issues/179\n */\ncontract ERC20Basic {\n    function totalSupply() public view returns (uint256);\n    function balanceOf(address who) public view returns (uint256);\n    function transfer(address to, uint256 value) public returns (bool);\n    event Transfer(address indexed from, address indexed to, uint256 value);\n}\n",
-  "sourcePath": "/home/nico/Desktop/public_repos/hospital_network/contracts/ERC20Basic.sol",
+  "sourcePath": "/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/ERC20Basic.sol",
   "ast": {
-    "absolutePath": "/home/nico/Desktop/public_repos/hospital_network/contracts/ERC20Basic.sol",
+    "absolutePath": "/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/ERC20Basic.sol",
     "exportedSymbols": {
       "ERC20Basic": [
         170
@@ -472,7 +472,7 @@
     "src": "0:452:2"
   },
   "legacyAST": {
-    "absolutePath": "/home/nico/Desktop/public_repos/hospital_network/contracts/ERC20Basic.sol",
+    "absolutePath": "/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/ERC20Basic.sol",
     "exportedSymbols": {
       "ERC20Basic": [
         170
@@ -858,9 +858,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-04T16:23:52.241Z"
+  "updatedAt": "2018-06-05T06:03:28.269Z"
 }

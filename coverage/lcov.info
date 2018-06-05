@@ -1,5 +1,5 @@
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/BasicToken.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/BasicToken.sol
 FN:20,totalSupply
 FN:29,transfer
 FN:44,balanceOf
@@ -26,7 +26,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/ERC20.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/ERC20.sol
 FNF:0
 FNH:0
 LF:0
@@ -35,7 +35,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/ERC20Basic.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/ERC20Basic.sol
 FNF:0
 FNH:0
 LF:0
@@ -44,7 +44,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/InterfacePatientRecords.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/InterfacePatientRecords.sol
 FNF:0
 FNH:0
 LF:0
@@ -53,7 +53,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/mocks/BasicTokenMock.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/mocks/BasicTokenMock.sol
 FN:8,
 FNF:1
 FNH:1
@@ -66,7 +66,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/mocks/SafeMathMock.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/mocks/SafeMathMock.sol
 FN:7,mul
 FN:11,div
 FN:15,sub
@@ -87,7 +87,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/mocks/StandardTokenMock.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/mocks/StandardTokenMock.sol
 FN:8,
 FNF:1
 FNH:1
@@ -100,7 +100,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/Ownable.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/Ownable.sol
 FN:19,
 FN:26,onlyOwner
 FN:35,transferOwnership
@@ -125,7 +125,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/PatientRecords.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/PatientRecords.sol
 FN:66,validParameters
 FN:71,hospitalDoesNotExist
 FN:76,hospitalExist
@@ -314,7 +314,7 @@ BRF:38
 BRH:35
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/SafeMath.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/SafeMath.sol
 FN:13,mul
 FN:25,div
 FN:35,sub
@@ -350,7 +350,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/SpringToken.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/SpringToken.sol
 FN:23,
 FNF:1
 FNH:1
@@ -364,7 +364,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/StandardToken.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/StandardToken.sol
 FN:25,transferFrom
 FN:47,approve
 FN:59,allowance
@@ -412,7 +412,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:/home/nico/Desktop/public_repos/hospital_network/contracts/TokenDestructible.sol
+SF:/Users/nico/Desktop/public_repos/Ethereum-Medical-Records/contracts/TokenDestructible.sol
 FN:15,
 FN:24,destroy
 FNF:2
