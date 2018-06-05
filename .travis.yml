@@ -13,7 +13,7 @@ script:
   - npm run lint:es
   - npm run lint:solium
   - npm run ganache
-  - sleep 5
+  - sleep 10
   - truffle migrate
   - truffle test
   - npm run stop
