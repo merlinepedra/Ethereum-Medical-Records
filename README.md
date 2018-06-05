@@ -29,6 +29,7 @@ git clone git@github.com:NFhbar/Ethereum-Medical-Records.git
 Create a new ```.env``` file in root directory and add your private key:
 ```
 RINKEBY_PRIVATE_KEY="MyPrivateKeyHere..."
+ROPSTEN_PRIVATE_KEY="MyPrivateKeyHere..."
 ```
 If you don't have a private key, you can use one provided by Ganache (for development only!):
 ```
